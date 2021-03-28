@@ -1,0 +1,68 @@
+﻿@model List<Person>
+@{ ViewData["Title"] = "Get By Name"; }
+
+<div class="container">
+
+    <form method="post" action="~/Home/GetInfoName">
+
+        <div class="form-group">
+            <label for="LastName">Lastname</label>
+            <input name="LastName" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="FirstName">Firstname</label>
+            <input name="FirstName" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="MiddleName">Middlename</label>
+            <input name="MiddleName" type="text" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-outline-dark" type="submit" value="Search" />
+        </div>
+
+    </form>
+
+</div>
+
+<div class="container">
+    @if (Model != null)
+    {
+        if (Model.Count > 0)
+        {
+<div class="table-responsive" style="width:100%">
+
+    <table class="table-hover table-bordered" style="width:100%;">
+
+        <thead>
+            <tr style="text-align:center">
+                <th>Id</th>
+                <th>LastName</th>
+                <th>FistName</th>
+                <th>MiddleName</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var person in Model)
+            {
+<tr style="text-align:center;">
+    <td>@person.Id</td>
+    <td>@person.LastName</td>
+    <td>@person.FirstName</td>
+    <td>@person.MiddleName</td>
+</tr>}
+        </tbody>
+
+    </table>
+
+</div> }
+                else
+                {
+<p class="bg-danger">Error: Not Found</p>}
+            }
+
+</div> 
